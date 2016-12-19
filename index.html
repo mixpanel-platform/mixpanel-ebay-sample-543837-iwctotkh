@@ -35,6 +35,13 @@
           MP.api.segment(eventName, propName, dateRange).done(function(results) {
             console.log(results)
             console.log(results.values())
+            MP.api.events(eventName, {
+              from: moment().subtract(7, 'days'),
+              unit: 'day'
+            }).done(function(newResults) { 
+              console.log(newResults)
+              console.log(newResults.values())
+            })
             eventGraph.MPChart('setData', results);
             eventTable.MPTable('setData', results);
           });
